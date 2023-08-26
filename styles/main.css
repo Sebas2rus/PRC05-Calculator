@@ -40,184 +40,91 @@
   overflow: hidden;
 }
 
-.container {
-  width: 100vw;
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url('../assets/images/fondo1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: 20%;
-  flex-direction: column;
-}
-.searchInput {
-  /* border: 1px solid var(--black); */
-  width: fit-content;
-  display: flex;
-  height: 3rem;
-  justify-content: center;
-  align-items: center;
-  padding: 0.7rem 1rem;
-  border-radius: 0.8rem;
-  background-color: var(--white);
-  z-index: 20;
-}
-.test {
-  /* border: 0; */
-  width: 12rem;
-  outline: none;
-  background-color: var(--white);
-  z-index: 20;
-}
-
-.textNotFound {
-  position: relative;
-  padding-top: 0.7rem;
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--white);
-  font-weight: bold;
-  z-index: 20;
-  letter-spacing: 0.1rem;
-}
-
-.descriptionNotFound {
-  position: relative;
-  font-size: 0.8rem;
-  z-index: 20;
-  text-align: center;
-}
-
-.wrapper {
-  position: absolute;
-  top: calc(50% - 1.5rem);
-  left: 0;
   width: 100vw;
-  height: 100vh;
-  background: #888787;
-  z-index: 10;
-  opacity: 0.3;
 }
+.calculator {
+  max-width: 450px;
+  border: solid 1px black;
+  padding: 1.5rem;
+  border-radius: 10px;
 
-.found {
-  width: 100vw;
-  height: 100vh;
-  background-image: url('../assets/images/fondo1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: 20%;
-}
+  #value {
+    border: solid 1px black;
+    padding: 0.3rem 0.2rem;
+    border-radius: 5px;
+    text-align: end;
+  }
 
-.searchFound {
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 10;
-  padding: 0.7rem 1rem;
-  border-radius: 0.8rem;
-  background-color: var(--white);
-  width: fit-content;
-  margin: 1.1em;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.info {
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 2rem;
-  background-color: var(--white);
-  opacity: 0.7;
-  padding: 1rem;
-  border-radius: 1rem;
-  width: 80%;
-  margin: 7rem auto 0;
-  .image {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-  }
-  .data {
-    font-size: 13px;
-    text-align: center;
-    .description {
-      margin-top: 1rem;
-    }
-  }
-}
-
-/* #searchView {
-  display: none;
-} */
-
-#notFoundView {
-  display: none;
-}
-#foundView {
-  display: none;
-}
-@media (min-width: 768px) {
-  .test {
-    width: 20rem;
-  }
-  .descriptionNotFound {
-    font-size: 1rem;
-    text-align: ce;
-  }
-  .textNotFound {
-    font-size: 1.5rem;
-  }
-  .wrapper {
-    top: calc(50% - 2.2rem);
-  }
-}
-
-@media (min-width: 1024px) {
-  .test {
-    width: 25rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .info {
-    width: 25rem;
-    height: 25rem;
-  }
-  .data {
-    width: 20rem;
-    & h4 {
-      padding-top: 0.5rem;
-    }
-  }
-  .description {
-    font-size: 1rem;
-    text-align: ce;
-  }
-}
-
-@media (min-width: 1024px) {
-  .searchFound {
-    padding: 0.9rem 1.3rem;
-    margin: 2rem;
-    right: 0;
-    width: fit-content;
+  .additional {
     display: flex;
-    height: 2.5rem;
+    margin-top: 1rem;
+    justify-content: flex-end;
 
-    .test {
-      max-width: 15rem;
+    .clear {
+      width: 20%;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: solid 1px gray;
     }
   }
-  .info {
-    width: 25rem;
+  .buttons {
+    display: flex;
+    gap: 4px;
+    margin-top: 1rem;
+
+    .numbers {
+      display: grid;
+      gap: 4px;
+      grid-template-columns: repeat(3, 1fr);
+      width: 80%;
+
+      > li {
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: solid 1px gray;
+        cursor: pointer;
+      }
+      .equal {
+        grid-column: 2 / 4;
+      }
+    }
+
+    .operations {
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      > li {
+        cursor: pointer;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        border: solid 1px gray;
+        justify-content: center;
+        /* margin-bottom: 4px; */
+      }
+    }
   }
 }
